@@ -16,12 +16,16 @@ public class SignupPage extends BasicPage{
         getTheNameInput().clear();
         getTheNameInput().sendKeys(name);
     }
+
     public WebElement getTheEmailInput () {
         return driver.findElement(By.id("email"));
     }
     public void clearAndTypeEmailInput (String email) {
         getTheEmailInput().clear();
         getTheEmailInput().sendKeys(email);
+    }
+    public String getAttributeTypeForEmailInput () {
+        return getTheEmailInput().getAttribute("type");
     }
     public WebElement getThePasswordInput () {
         return driver.findElement(By.id("password"));
@@ -30,12 +34,18 @@ public class SignupPage extends BasicPage{
         getThePasswordInput().clear();
         getThePasswordInput().sendKeys(password);
     }
+    public String getAttributeTypeForPasswordInput () {
+        return getThePasswordInput().getAttribute("type");
+    }
     public WebElement getTheConfirmPasswordInput () {
         return driver.findElement(By.id("confirmPassword"));
     }
     public void clearAndTypeConfirmPasswordInput (String password) {
         getTheConfirmPasswordInput().clear();
         getTheConfirmPasswordInput().sendKeys(password);
+    }
+    public String getAttributeTypeForConfirmPasswordInput () {
+        return getTheConfirmPasswordInput().getAttribute("type");
     }
     public WebElement getTheSingMeUpButton () {
         return driver.findElement(By.cssSelector("button[type='submit']"));
