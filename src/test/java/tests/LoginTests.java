@@ -15,4 +15,14 @@ public class LoginTests extends BasicTest{
                 baseUrl + "login",
                 "Current URL should contain 'login'.");
     }
+    @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void checksInputTypes () {
+        navPage.clickOnTheLoginButton();
+        Assert.assertEquals(loginPage.getAttributeTypeForEmailInput(),
+                "email",
+                "Attribute type for the email input should have the value 'email'.");
+        Assert.assertEquals(loginPage.getAttributeTypeForPasswordInput(),
+                "password",
+                "Attribute type for the password input should have the value 'password'.");
+    }
 }
