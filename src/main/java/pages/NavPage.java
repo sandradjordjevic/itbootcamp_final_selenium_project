@@ -112,5 +112,9 @@ public class NavPage extends BasicPage{
         getTheUkranianLanguageItem().click();
     }
 
+    public void waitForTheLogoutButtonToBeVisible () {
+        wait    .withMessage("Button Logout should be visible.")
+                .until(ExpectedConditions.visibilityOf(getTheLogOutButton()));
+    }
 
 }

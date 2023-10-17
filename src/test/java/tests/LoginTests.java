@@ -66,4 +66,10 @@ public class LoginTests extends BasicTest{
         wait    .withMessage("Current URL should contain 'home'.")
                 .until(ExpectedConditions.urlContains("home"));
     }
+    @Test (priority = 6, retryAnalyzer = RetryAnalyzer.class)
+    public void logout () throws InterruptedException {
+        login();
+        navPage.waitForTheLogoutButtonToBeVisible();
+        loginPage.clickOnLoginButton();
+    }
 }
