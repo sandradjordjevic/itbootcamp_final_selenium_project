@@ -17,6 +17,8 @@ public abstract class BasicTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl = "https://vue-demo.daniel-avellaneda.com/";
+    protected NavPage navPage;
+    protected LoginPage loginPage;
     @BeforeClass
     public void setup () {
         WebDriverManager.chromedriver().setup();
@@ -25,6 +27,8 @@ public abstract class BasicTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        navPage = new NavPage(driver, wait);
+        loginPage = new LoginPage(driver, wait);
     }
     @BeforeMethod
     public void beforeMethod () {
