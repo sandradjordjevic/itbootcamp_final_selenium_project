@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import retry.RetryAnalyzer;
@@ -48,6 +49,28 @@ public class SignUpTest extends BasicTest{
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "signup",
                 "Current URL should contain 'signup'");
+    }
+    @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void signup () {
+        String name = "Djordje Djordjevic";
+        String email = "dj.djordjevic@itbootcamp.rs";
+        String password = "12345";
+        String confirmPassword = "12345";
+
+        navPage.clickOnTheSignUpButton();
+        signupPage.clearAndTypeNameInput(name);
+        signupPage.clearAndTypeEmailInput(email);
+        signupPage.clearAndTypePasswordInput(password);
+        signupPage.clearAndTypeConfirmPasswordInput(confirmPassword);
+        signupPage.clickOnTheSingMeUpButton();
+        wait    .withMessage("User should be redirected to home page.")
+                .until(ExpectedConditions.urlContains("home"));
+        messagePopUpPage.waitForThePopUpMessageWhenUserSignupToBeVisible();
+        Assert.assertEquals(messagePopUpPage.getTheTextFromPopUpMessageWhenUserSignUp(),
+                "IMPORTANT: Verify your account",
+                "Pop up message when user signup should be 'IMPORTANT: Verify your account'");
+        messagePopUpPage.clickOnTheCloseButtonFromPopUpMessage();
+        navPage.clickOnTheLogOutButton();
 
     }
 }
