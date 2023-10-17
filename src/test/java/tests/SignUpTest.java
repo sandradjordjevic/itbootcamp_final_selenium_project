@@ -25,4 +25,29 @@ public class SignUpTest extends BasicTest{
                 "password",
                 "Attribute type for the confirm password input should have the value 'password'.");
     }
+    @Test (priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void displaysErrorsWhenUserAlreadyExists () {
+        String name = "Another User";
+        String email = "admin@admin.com";
+        String password = "12345";
+        String confirmPassword = "12345";
+
+        navPage.clickOnTheSignUpButton();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "signup",
+                "Current URL should contain 'signup'");
+        signupPage.clearAndTypeNameInput(name);
+        signupPage.clearAndTypeEmailInput(email);
+        signupPage.clearAndTypePasswordInput(password);
+        signupPage.clearAndTypeConfirmPasswordInput(confirmPassword);
+        signupPage.clickOnTheSingMeUpButton();
+        messagePopUpPage.waitForThePopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.getTheTextFromPopUpMessage(),
+                "E-mail already exists",
+                "Pop up message when user alredy exist should be 'E-mail already exists'.");
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "signup",
+                "Current URL should contain 'signup'");
+
+    }
 }

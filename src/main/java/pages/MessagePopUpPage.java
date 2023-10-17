@@ -10,20 +10,20 @@ public class MessagePopUpPage extends BasicPage{
     public MessagePopUpPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
-    public void waitForThePopUpToBeVisibleWhenCredentialAreWrong () {
+    public void waitForThePopUpToBeVisible() {
         wait    .withMessage("Pop up message for invalid login should be visible.")
                 .until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.error div[role='status']"))));
     }
-    public WebElement getThePopUpMessageWhenCredentialAreWrong () {
+    public WebElement getThePopUpMessage () {
         return driver.findElement(By.cssSelector("div.error div[role='status'] ul li"));
     }
-    public String getTheTextFromPopUpMessageWhenCredentialAreWrong () {
-        return getThePopUpMessageWhenCredentialAreWrong().getText();
+    public String getTheTextFromPopUpMessage () {
+        return getThePopUpMessage().getText();
     }
-    public WebElement getTheCloseButtonFromPopUpMessageWhenCredentialAreWrong () {
+    public WebElement getTheCloseButtonFromPopUpMessage () {
         return driver.findElement(By.cssSelector("div.error div[role='status'] button[fdprocessedid = 'h1bo3']"));
     }
     public void clickOnTheCloseButtonFromPopUpMessage () {
-        getTheCloseButtonFromPopUpMessageWhenCredentialAreWrong().click();
+        getTheCloseButtonFromPopUpMessage().click();
     }
 }

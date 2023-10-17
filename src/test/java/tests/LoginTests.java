@@ -33,8 +33,8 @@ public class LoginTests extends BasicTest{
 
         navPage.clickOnTheLoginButton();
         loginPage.login(email, password);
-        messagePopUpPage.waitForThePopUpToBeVisibleWhenCredentialAreWrong();
-        Assert.assertEquals(messagePopUpPage.getTheTextFromPopUpMessageWhenCredentialAreWrong(),
+        messagePopUpPage.waitForThePopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.getTheTextFromPopUpMessage(),
                 "User does not exists",
                 "Pop up message when credential are wrong should be 'User does not exist'.");
         Assert.assertEquals(driver.getCurrentUrl(),
@@ -48,8 +48,8 @@ public class LoginTests extends BasicTest{
 
         navPage.clickOnTheLoginButton();
         loginPage.login(email, password);
-        messagePopUpPage.waitForThePopUpToBeVisibleWhenCredentialAreWrong();
-        Assert.assertEquals(messagePopUpPage.getTheTextFromPopUpMessageWhenCredentialAreWrong(),
+        messagePopUpPage.waitForThePopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.getTheTextFromPopUpMessage(),
                 "Wrong password",
                 "Pop up message when password is wrong should be 'Wrong password'.");
         Assert.assertEquals(driver.getCurrentUrl(),
