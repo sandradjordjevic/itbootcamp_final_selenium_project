@@ -71,6 +71,5 @@ public class SignUpTest extends BasicTest{
                 "Pop up message when user signup should be 'IMPORTANT: Verify your account'");
         messagePopUpPage.clickOnTheCloseButtonFromPopUpMessage();
         navPage.clickOnTheLogOutButton();
-
     }
 }
