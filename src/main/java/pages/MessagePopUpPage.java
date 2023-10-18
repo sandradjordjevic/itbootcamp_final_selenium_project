@@ -36,17 +36,4 @@ public class MessagePopUpPage extends BasicPage{
     public String getTheTextFromPopUpMessageWhenUserSignUp () {
         return getPopUpMessageWhenUserSignUp().getText();
     }
-    public WebElement getThePopUpMessageAfterClickingTheNewItemButton () {
-        return  driver.findElement(By.className("dlgNewEditItem"));
-    }
-    public void waitForPopUpMessageAfterClickingTheNewItemButton () {
-        wait    .withMessage("Popup message when admin click on New Item button should be visible.")
-                .until(ExpectedConditions.visibilityOf(getThePopUpMessageAfterClickingTheNewItemButton()));
-    }
-    public WebElement getTheInputFromPopUpMessageAfterClickingTheNewItemButton () {
-        return driver.findElement(By.id("name"));
-    }
-    public String getAttributeTypeForInputFromPopUpMessageAfterClickingTheNewItemButton () {
-        return getTheInputFromPopUpMessageAfterClickingTheNewItemButton().getAttribute("type");
-    }
 }

@@ -30,6 +30,12 @@ public class CitiesPage extends BasicPage{
                 .until(ExpectedConditions.visibilityOf
                         (driver.findElement(By.cssSelector("div[tabindex='0'].v-dialog__content .v-card"))));
     }
+    public WebElement getInputFromNewItemDialog () {
+        return driver.findElement(By.id("name"));
+    }
+    public String getAttributeTypeForInputFromNewItemDialog () {
+        return getInputFromNewItemDialog().getAttribute("type");
+    }
     public void waitForEditItemDialogToBeVisible () {
         wait    .withMessage("After clicking on the edit item button the edit dialog should be visible.")
                 .until(ExpectedConditions.visibilityOf(driver.findElement(By.className("dlgNewEditItem "))));

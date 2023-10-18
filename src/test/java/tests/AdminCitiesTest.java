@@ -25,10 +25,9 @@ public class AdminCitiesTest extends BasicTest{
         navPage.waitForTheListFromAdminButtonToBeVisible();
         navPage.clickOnTheCitiesLinkFromAdminList();
         citiesPage.clickOnTheNewItemButton();
-        messagePopUpPage.waitForPopUpMessageAfterClickingTheNewItemButton();
-        Assert.assertEquals(messagePopUpPage.getAttributeTypeForInputFromPopUpMessageAfterClickingTheNewItemButton(),
+        citiesPage.waitForNewItemDialogToBeVisible();
+        Assert.assertEquals(citiesPage.getAttributeTypeForInputFromNewItemDialog(),
                 "text",
                 "Attribute type for input from PopUp message after clicking on New Item button should be 'text'");
-
     }
 }
