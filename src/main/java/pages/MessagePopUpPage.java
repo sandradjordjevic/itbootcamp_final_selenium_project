@@ -36,4 +36,14 @@ public class MessagePopUpPage extends BasicPage{
     public String getTheTextFromPopUpMessageWhenUserSignUp () {
         return getPopUpMessageWhenUserSignUp().getText();
     }
+    public WebElement getSuccessPopUpMessage () {
+        return driver.findElement(By.cssSelector("div.success div[role='status']"));
+    }
+    public void waitForSuccessPopUpMessage() {
+        wait    .withMessage("Successfully pop up message should be visible.")
+                .until(ExpectedConditions.visibilityOf(getSuccessPopUpMessage()));
+    }
+    public boolean getTheTextFromSuccessPopMessage(String message) {
+        return getSuccessPopUpMessage().getText().contains(message);
+    }
 }

@@ -36,6 +36,16 @@ public class CitiesPage extends BasicPage{
     public String getAttributeTypeForInputFromNewItemDialog () {
         return getInputFromNewItemDialog().getAttribute("type");
     }
+    public void clearAndTypeInputFromNewItemDialog (String cityName) {
+        getInputFromNewItemDialog().clear();
+        getInputFromNewItemDialog().sendKeys(cityName);
+    }
+    public WebElement getSaveButtonFromNewItemDialog () {
+        return driver.findElement(By.className("btnSave"));
+    }
+    public void clickOnTheSaveButtonFromNewItemDialog () {
+        getSaveButtonFromNewItemDialog().click();
+    }
     public void waitForEditItemDialogToBeVisible () {
         wait    .withMessage("After clicking on the edit item button the edit dialog should be visible.")
                 .until(ExpectedConditions.visibilityOf(driver.findElement(By.className("dlgNewEditItem "))));
