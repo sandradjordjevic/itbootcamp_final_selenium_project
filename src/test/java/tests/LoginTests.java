@@ -13,7 +13,7 @@ public class LoginTests extends BasicTest{
         navPage.selectEnglishLanguage();
         navPage.clickOnTheLoginButton();
         Assert.assertEquals(driver.getCurrentUrl(),
-                baseUrl + "login",
+                baseUrl + "/login",
                 "Current URL should contain 'login'.");
     }
     @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
@@ -38,8 +38,8 @@ public class LoginTests extends BasicTest{
                 "User does not exists",
                 "Pop up message when credential are wrong should be 'User does not exist'.");
         Assert.assertEquals(driver.getCurrentUrl(),
-                baseUrl + "login",
-                "Current URL should contain 'login'.");
+                baseUrl + "/login",
+                "Current URL should contain '/login'.");
     }
     @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
     public void displaysErrorsWhenPasswordIsWrong () {
@@ -53,7 +53,7 @@ public class LoginTests extends BasicTest{
                 "Wrong password",
                 "Pop up message when password is wrong should be 'Wrong password'.");
         Assert.assertEquals(driver.getCurrentUrl(),
-                baseUrl + "login",
+                baseUrl + "/login",
                 "Current URL should contain 'login'.");
     }
     @Test (priority = 5, retryAnalyzer = RetryAnalyzer.class)
@@ -64,7 +64,7 @@ public class LoginTests extends BasicTest{
         navPage.clickOnTheLoginButton();
         loginPage.login(email, password);
         wait    .withMessage("Current URL should contain 'home'.")
-                .until(ExpectedConditions.urlContains("home"));
+                .until(ExpectedConditions.urlToBe(baseUrl + "/home"));
     }
     @Test (priority = 6, retryAnalyzer = RetryAnalyzer.class)
     public void logout () throws InterruptedException {

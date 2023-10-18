@@ -18,7 +18,7 @@ import java.time.Duration;
 public abstract class BasicTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected String baseUrl = "https://vue-demo.daniel-avellaneda.com/";
+    protected String baseUrl = "https://vue-demo.daniel-avellaneda.com";
     protected NavPage navPage;
     protected LoginPage loginPage;
     protected MessagePopUpPage messagePopUpPage;

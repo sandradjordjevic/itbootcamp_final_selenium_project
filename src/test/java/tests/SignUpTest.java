@@ -10,8 +10,8 @@ public class SignUpTest extends BasicTest{
     public void visitsTheSignupPage () {
         navPage.clickOnTheSignUpButton();
         Assert.assertEquals(driver.getCurrentUrl(),
-                baseUrl + "signup",
-                "Current URL should contain 'signup'");
+                baseUrl + "/signup",
+                "Current URL should contain '/signup'");
     }
     @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
     public void checksInputTypes () {
@@ -35,8 +35,8 @@ public class SignUpTest extends BasicTest{
 
         navPage.clickOnTheSignUpButton();
         Assert.assertEquals(driver.getCurrentUrl(),
-                baseUrl + "signup",
-                "Current URL should contain 'signup'");
+                baseUrl + "/signup",
+                "Current URL should contain '/signup'");
         signupPage.clearAndTypeNameInput(name);
         signupPage.clearAndTypeEmailInput(email);
         signupPage.clearAndTypePasswordInput(password);
@@ -47,7 +47,7 @@ public class SignUpTest extends BasicTest{
                 "E-mail already exists",
                 "Pop up message when user alredy exist should be 'E-mail already exists'.");
         Assert.assertEquals(driver.getCurrentUrl(),
-                baseUrl + "signup",
+                baseUrl + "/signup",
                 "Current URL should contain 'signup'");
     }
     @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
@@ -64,7 +64,7 @@ public class SignUpTest extends BasicTest{
         signupPage.clearAndTypeConfirmPasswordInput(confirmPassword);
         signupPage.clickOnTheSingMeUpButton();
         wait    .withMessage("User should be redirected to home page.")
-                .until(ExpectedConditions.urlContains("home"));
+                .until(ExpectedConditions.urlToBe(baseUrl + "/home"));
         messagePopUpPage.waitForThePopUpMessageWhenUserSignupToBeVisible();
         Assert.assertEquals(messagePopUpPage.getTheTextFromPopUpMessageWhenUserSignUp(),
                 "IMPORTANT: Verify your account",
