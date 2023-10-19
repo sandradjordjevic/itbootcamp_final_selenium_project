@@ -24,7 +24,7 @@ public class LocaleTests extends BasicTest{
                 "Landing",
                 "The heading should be in English");
     }
-    @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    @Test (priority = 3, retryAnalyzer = RetryAnalyzer.class)
     public void setLocaleToCN () {
         navPage.clickOnTheLanguageSelectionButton();
         navPage.waitForTheListFromLanguageSelectionButtonToBeVisible();
@@ -32,5 +32,14 @@ public class LocaleTests extends BasicTest{
         Assert.assertEquals(landingPage.getTheTextFromH1(),
                 "首页",
                 "The heading should be in Chinese");
+    }
+    @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void setLocaleToFR () {
+        navPage.clickOnTheLanguageSelectionButton();
+        navPage.waitForTheListFromLanguageSelectionButtonToBeVisible();
+        navPage.selectFrenchLanguage();
+        Assert.assertEquals(landingPage.getTheTextFromH1(),
+                "Page d'atterrissage",
+                "The heading should be in French");
     }
 }
