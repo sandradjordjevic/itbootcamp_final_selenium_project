@@ -24,4 +24,13 @@ public class LocaleTests extends BasicTest{
                 "Landing",
                 "The heading should be in English");
     }
+    @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void setLocaleToCN () {
+        navPage.clickOnTheLanguageSelectionButton();
+        navPage.waitForTheListFromLanguageSelectionButtonToBeVisible();
+        navPage.selectChineseLanguage();
+        Assert.assertEquals(landingPage.getTheTextFromH1(),
+                "首页",
+                "The heading should be in Chinese");
+    }
 }
