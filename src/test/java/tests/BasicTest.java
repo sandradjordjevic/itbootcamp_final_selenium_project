@@ -22,6 +22,7 @@ public abstract class BasicTest {
     protected SignupPage signupPage;
     protected CitiesPage citiesPage;
     protected LandingPage landingPage;
+    protected ProfilePage profilePage;
     @BeforeClass
     public void setup () {
         WebDriverManager.chromedriver().setup();
@@ -36,6 +37,7 @@ public abstract class BasicTest {
         signupPage = new SignupPage(driver, wait);
         citiesPage = new CitiesPage(driver, wait);
         landingPage = new LandingPage(driver, wait);
+        profilePage = new ProfilePage(driver, wait);
     }
     @BeforeMethod
     public void beforeMethod () {
