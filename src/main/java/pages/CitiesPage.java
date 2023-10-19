@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -48,7 +49,13 @@ public class CitiesPage extends BasicPage{
     }
     public void waitForEditItemDialogToBeVisible () {
         wait    .withMessage("After clicking on the edit item button the edit dialog should be visible.")
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.className("dlgNewEditItem "))));
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.className("dlgNewEditItem"))));
+    }
+    public WebElement getInputFromEditItemDialog () {
+        return driver.findElement(By.id("name"));
+    }
+    public void clearAndTypeInputFromEditItemDialog (String newName) {
+        getInputFromEditItemDialog().sendKeys(Keys.chord(Keys.CONTROL, "a"), newName);
     }
     public WebElement getTheButtonSaveFromEditDialog () {
         return driver.findElement(By.cssSelector(".btnSave"));
@@ -79,12 +86,15 @@ public class CitiesPage extends BasicPage{
         return driver.findElements(By.id("edit"));
     }
     public WebElement getEditButtonFromSpecificRow (int numberOfRow) {
-        return getEditButtonFromAllRows().get(numberOfRow);
+        return getEditButtonFromAllRows().get(numberOfRow - 1);
+    }
+    public void clickOnTheEditButtonFromSpecificRow (int numberOfRow) {
+        getEditButtonFromSpecificRow(numberOfRow).click();
     }
     public List<WebElement> getBinButtonFromAllRows () {
         return driver.findElements(By.id("delete"));
     }
     public WebElement getBinButtonFromSpecificRow (int numberOfRow) {
-        return getBinButtonFromAllRows().get(numberOfRow);
+        return getBinButtonFromAllRows().get(numberOfRow - 1);
     }
 }
