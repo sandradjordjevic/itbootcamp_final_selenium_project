@@ -26,4 +26,11 @@ public class AuthRoutesTests extends BasicTest{
                 baseUrl + "/login",
                 "The user should stay on the login page");
     }
+    @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void forbidsVisitsToAdminUsersUrlIfNotAuthenticated () {
+        driver.navigate().to(baseUrl + "/admin/users");
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/login",
+                "The user should stay on the login page");
+    }
 }
