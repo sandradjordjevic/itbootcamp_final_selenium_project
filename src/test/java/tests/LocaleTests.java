@@ -15,4 +15,13 @@ public class LocaleTests extends BasicTest{
                 "Página de aterrizaje",
                 "The heading should be in Spanish");
     }
+    @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void setLocaleToEN () {
+        navPage.clickOnTheLanguageSelectionButton();
+        navPage.waitForTheListFromLanguageSelectionButtonToBeVisible();
+        navPage.selectEnglishLanguage();
+        Assert.assertEquals(landingPage.getTheTextFromH1(),
+                "Landing",
+                "The heading should be in English");
+    }
 }
