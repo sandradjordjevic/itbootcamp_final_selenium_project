@@ -10,6 +10,13 @@ public class AuthRoutesTests extends BasicTest{
         driver.navigate().to(baseUrl + "/home");
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "/login",
-                "The URl of the home page should contain '/login'");
+                "The user should stay on the login page");
+    }
+    @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void forbidsVisitsToProfileUrlIfNotAuthenticated () {
+        driver.navigate().to(baseUrl + "/profile");
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/login",
+                "The user should stay on the login page");
     }
 }
