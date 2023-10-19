@@ -42,4 +42,13 @@ public class LocaleTests extends BasicTest{
                 "Page d'atterrissage",
                 "The heading should be in French");
     }
+    @Test (priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void setLocaleToUA () {
+        navPage.clickOnTheLanguageSelectionButton();
+        navPage.waitForTheListFromLanguageSelectionButtonToBeVisible();
+        navPage.selectUkranianLanguage();
+        Assert.assertEquals(landingPage.getTheTextFromH1(),
+                "Лендінг",
+                "The heading should be in Ukranian");
+    }
 }
