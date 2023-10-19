@@ -69,7 +69,7 @@ public class CitiesPage extends BasicPage{
                 (driver.findElement(By.cssSelector("div[role='document'] div.v-dialog--active"))));
     }
     public WebElement getTheDeleteButtonFromDeleteDialog () {
-        return driver.findElement(By.cssSelector("button[fdprocessedid='e31zxj']"));
+        return driver.findElement(By.cssSelector("button.v-btn.red--text"));
     }
     public void clickOnTheDeleteButtonFromDeleteDialog () {
         getTheDeleteButtonFromDeleteDialog().click();
@@ -96,5 +96,8 @@ public class CitiesPage extends BasicPage{
     }
     public WebElement getBinButtonFromSpecificRow (int numberOfRow) {
         return getBinButtonFromAllRows().get(numberOfRow - 1);
+    }
+    public void clickOnTheBinButton (int numberOfRow) {
+        getBinButtonFromSpecificRow(numberOfRow).click();
     }
 }

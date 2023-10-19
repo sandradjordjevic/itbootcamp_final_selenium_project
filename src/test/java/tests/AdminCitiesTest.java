@@ -63,4 +63,23 @@ public class AdminCitiesTest extends BasicTest{
         Assert.assertTrue(messagePopUpPage.getTheTextFromSuccessPopMessage("Saved successfully"),
                 "PopUp message when user successfully saves the edited item should be 'Saved successfully'");
     }
+    @Test (priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void deleteCity () {
+        String cityName = "New City edit";
+
+        navPage.clickOnTheAdminButton();
+        navPage.waitForTheListFromAdminButtonToBeVisible();
+        navPage.clickOnTheCitiesLinkFromAdminList();
+        citiesPage.clearAndTypeInSearchInput(cityName);
+        citiesPage.waitForTheSpecifiedNumberOfRowsToBeVisible(1);
+        Assert.assertEquals(citiesPage.specificCellFromSpecificRow(1, 2).getText(),
+                cityName,
+                "In the name column of the first row it should be " + cityName);
+        citiesPage.clickOnTheBinButton(1);
+        citiesPage.waitForDeleteItemDialogToBeVisible();
+        citiesPage.clickOnTheDeleteButtonFromDeleteDialog();
+        messagePopUpPage.waitForSuccessPopUpMessage();
+        Assert.assertTrue(messagePopUpPage.getTheTextFromSuccessPopMessage("Deleted successfully"),
+                "PopUp message when user successfully deletes an item should be 'Deleted successfully'");
+    }
 }
