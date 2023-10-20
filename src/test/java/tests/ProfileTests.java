@@ -19,6 +19,7 @@ public class ProfileTests extends BasicTest{
         profilePage.waitForTheDialogToBeInvisible();
         Assert.assertEquals(email,
                 profilePage.getAttributeValueFromInputEmail());
+        navPage.clickOnTheLogOutButton();
     }
     @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
     public void checksInputTypes () throws InterruptedException {
@@ -45,6 +46,30 @@ public class ProfileTests extends BasicTest{
                 "Input github should have url type");
         Assert.assertTrue(profilePage.getAttributeTypeFromInputPhone().contains("tel"),
                 "Input phone should have tel type");
+        navPage.clickOnTheLogOutButton();
+    }
+    @Test (priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void editsProfile () {
+        String email = "admin@admin.com";
+        String password = "12345";
+        String name = "Mika Mikic";
+        String phone = "+38161283223";
+        String city = "Bucaramanga";
+        String twitter = "https://twitter.com/profile/milan1232";
+        String gitHub = "https://github.com";
+
+        navPage.clickOnTheLoginButton();
+        loginPage.login(email, password);
+        navPage.clickOnTheMyProfileButton();
+        profilePage.waitForTheDialogToBeInvisible();
+        profilePage.clearAndTypeInputName(name);
+        profilePage.clearAndTypeInputPhone(phone);
+        profilePage.clearAndTypeInputCity(city);
+        profilePage.clearAndTypeInputTwitter(twitter);
+        profilePage.clearAndTypeInputGitHub(gitHub);
+        profilePage.clickOnTheSaveButton();
+        messagePopUpPage.waitForSuccessPopUpMessage();
+        Assert.assertTrue(messagePopUpPage.getTheTextFromSuccessPopMessage("Profile saved successfuly"));
         navPage.clickOnTheLogOutButton();
     }
 }
