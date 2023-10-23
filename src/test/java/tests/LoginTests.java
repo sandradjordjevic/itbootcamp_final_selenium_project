@@ -68,8 +68,7 @@ public class LoginTests extends BasicTest{
     }
     @Test (priority = 6, retryAnalyzer = RetryAnalyzer.class)
     public void logout () throws InterruptedException {
-        login();
         navPage.waitForTheLogoutButtonToBeVisible();
-        loginPage.clickOnLoginButton();
+        navPage.clickOnTheLogOutButton();
     }
 }
